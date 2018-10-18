@@ -187,7 +187,7 @@ def pickMove(i, N, H, T, P):
 ######################################################################
 # Governs game play for N players (2 by default) using an K-card deck
 # (40 by default). Refactored for simplicity from version of HW4.
-def play(N=2, K=10):
+def play(N=2, K=40):
     # Corrected so that we can play multiple games without resetting
     # the Python session. As originally written, shuffle() creates a
     # default deck as its argument which is consumed (and not reset)
@@ -273,3 +273,15 @@ def play(N=2, K=10):
 
     # Return player scores as dictionary.
     return({ p:sum( [ c[0] for c in P[p] ] ) for p in P })
+
+if __name__ == '__main__':
+    try:
+        numPlayers = int(input("Enter number of players\n(hit enter for default - 2): "))
+    except:
+        numPlayers = 2
+    try:
+        numCardsInDeck = int(input("Enter number of cards in deck\n(hit enter for default - 40): "))
+    except:
+        numCardsInDeck = 40
+
+    play(numPlayers, numCardsInDeck)
